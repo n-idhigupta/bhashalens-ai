@@ -1,0 +1,7 @@
+<svg width="280" height="80" viewBox="0 0 280 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="280" height="80" rx="20" fill="#0F172A"/>
+  <circle cx="40" cy="40" r="22" fill="#4F46E5"/>
+  <path d="M28 40C30.5 32 34 48 36.5 40C39 32 42 48 44.5 40C47 32 50 48 52 40" stroke="#06B6D4" stroke-width="3" stroke-linecap="round"/>
+  <text x="75" y="37" fill="#F8FAFC" font-size="22" font-family="Arial, sans-serif" font-weight="700">BhashaLens</text>
+  <text x="75" y="58" fill="#94A3B8" font-size="14" font-family="Arial, sans-serif">Decode Voices. Discover Languages.</text>
+</svg>

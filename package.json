@@ -1,0 +1,42 @@
+{
+  "name": "bhashalens-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n-idhigupta/bhashalens-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/n-idhigupta/bhashalens-ai/issues"
+  },
+  "homepage": "https://github.com/n-idhigupta/bhashalens-ai#readme",
+  "dependencies": {
+    "axios": "^1.14.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.0",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^1.7.0",
+    "mongoose": "^9.4.1",
+    "multer": "^2.1.1",
+    "react-router-dom": "^7.14.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "nodemon": "^3.1.14",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2"
+  }
+}

@@ -1,0 +1,37 @@
+# dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+ml-service/node_modules/
+
+# env files
+.env
+client/.env
+server/.env
+backend/.env
+ml-service/.env
+
+# uploads
+server/uploads/
+
+# build files
+dist/
+build/
+client/dist/
+server/dist/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+venv/
+__pycache__/
+*.pyc
