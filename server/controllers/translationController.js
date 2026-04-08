@@ -1,4 +1,5 @@
 const path = require("path");
+const axios = require("axios");
 const Translation = require("../models/Translation");
 
 const uploadAndProcessFile = async (req, res) => {
@@ -11,47 +12,49 @@ const uploadAndProcessFile = async (req, res) => {
     const fileExt = path.extname(fileName).toLowerCase();
 
     let detectedType = "Unknown";
-    let extractedText = "Sample extracted content from uploaded file.";
-    let detectedLanguage = "Hindi";
-    let summary =
-      "This is a mock AI-generated summary of the uploaded content. Real OCR / diarization / translation will be integrated in the next phase.";
+    let mockInputText = "Sample extracted content from uploaded file.";
 
     if ([".png", ".jpg", ".jpeg", ".webp"].includes(fileExt)) {
       detectedType = "Image";
-      extractedText =
-        "Mock OCR output: यह एक नमूना टेक्स्ट है जो इमेज से निकाला गया है।";
-      detectedLanguage = "Hindi";
-      summary =
-        "The uploaded image appears to contain Hindi text. OCR extraction and language understanding were simulated successfully.";
+      mockInputText =
+        "यह एक नमूना टेक्स्ट है जो इमेज से निकाला गया है।";
     } else if ([".mp3", ".wav", ".m4a"].includes(fileExt)) {
       detectedType = "Audio";
-      extractedText =
-        "Mock diarization transcript: Speaker 1 introduced the topic, and Speaker 2 responded with supporting context.";
-      detectedLanguage = "Punjabi / Hindi Mixed";
-      summary =
-        "The uploaded audio appears to include multi-speaker conversation in mixed Indian languages.";
+      mockInputText =
+        "Speaker 1 introduced the topic, and Speaker 2 responded with supporting context.";
     } else if ([".pdf", ".doc", ".docx", ".txt"].includes(fileExt)) {
       detectedType = "Document";
-      extractedText =
-        "Mock document extraction: This file contains structured textual content ready for AI processing.";
-      detectedLanguage = "English";
-      summary =
-        "The uploaded document was successfully interpreted as text-ready input for analysis.";
+      mockInputText =
+        "This file contains structured textual content ready for AI processing.";
     }
+
+    // Call deployed ML service
+    const mlResponse = await axios.post(
+      `${process.env.ML_SERVICE_URL}/analyze`,
+      {
+        text: mockInputText,
+        fileName: fileName,
+      }
+    );
+
+    const result = mlResponse.data;
 
     const savedResult = await Translation.create({
       user: req.user._id,
-      fileName,
+      fileName: result.fileName || fileName,
       fileType: detectedType,
-      extractedText,
-      detectedLanguage,
-      summary,
+      extractedText: result.extractedText,
+      detectedLanguage: result.detectedLanguage,
+      summary: result.summary,
       uploadedAt: new Date(),
     });
 
     res.status(200).json(savedResult);
   } catch (error) {
-    console.error("Upload Processing Error:", error);
+    console.error(
+      "Upload Processing Error:",
+      error.response?.data || error.message
+    );
     res.status(500).json({ message: "File processing failed" });
   }
 };
