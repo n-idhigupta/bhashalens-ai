@@ -14,7 +14,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://YOUR-CLIENT-URL.onrender.com"
+    "https://bhashalens-ai-client.onrender.com"
   ],
   credentials: true
 }));
