@@ -15,15 +15,15 @@ function SignupPage() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError("");
   };
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setError("");
 
     try {
-      const { data } = await API.post("/auth/register", formData);
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      const res = await API.post("/auth/register", formData);
+      localStorage.setItem("userInfo", JSON.stringify(res.data));
       navigate("/dashboard");
     } catch (err) {
       console.error("Signup Error:", err.response?.data || err.message);
@@ -32,13 +32,11 @@ function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2] px-4">
-      <div className="bg-white p-10 rounded-3xl shadow-md w-full max-w-lg border border-[#EFE5D8]">
-        <p className="text-sm tracking-[0.3em] text-[#B28A6A] mb-4">SIGNUP</p>
-        <h1 className="text-4xl font-bold text-[#4B2E1F] mb-4">
-          Create Account
-        </h1>
-        <p className="text-[#6E4D3B] mb-6">Start using BhashaLens AI</p>
+    <div className="min-h-screen flex items-center justify-center bg-[#f5f1ec]">
+      <div className="bg-white p-10 rounded-3xl shadow-md w-full max-w-lg">
+        <p className="text-sm tracking-[0.3em] text-[#b28a6a] mb-4">SIGNUP</p>
+        <h1 className="text-5xl font-bold text-[#4b2e1f] mb-4">Create Account</h1>
+        <p className="text-[#6e4d3b] mb-6">Start using BhashaLens AI</p>
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
 
@@ -72,13 +70,13 @@ function SignupPage() {
           />
           <button
             type="submit"
-            className="w-full bg-[#4B2E1F] text-white py-3 rounded-xl"
+            className="w-full bg-[#4b2e1f] text-white py-3 rounded-xl"
           >
             Sign Up
           </button>
         </form>
 
-        <p className="mt-6 text-center text-[#6E4D3B]">
+        <p className="mt-6 text-center text-[#6e4d3b]">
           Already have an account?{" "}
           <Link to="/login" className="font-semibold">
             Login

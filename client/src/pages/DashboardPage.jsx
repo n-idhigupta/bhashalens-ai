@@ -44,7 +44,9 @@ function DashboardPage() {
         <div className="grid md:grid-cols-3 gap-6 mb-10">
           <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-6 shadow-sm">
             <p className="text-sm text-[#A08467] mb-2">Total Uploads</p>
-            <h2 className="text-4xl font-bold text-[#3E2F25]">{history.length}</h2>
+            <h2 className="text-4xl font-bold text-[#3E2F25]">
+              {history.length}
+            </h2>
           </div>
 
           <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-6 shadow-sm">
