@@ -82,40 +82,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      <section className="max-w-7xl mx-auto px-6 pb-20">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-8 shadow-sm">
-            <p className="text-sm text-[#A08467] mb-3">01</p>
-            <h3 className="text-2xl font-semibold text-[#4B3A2F] mb-4">
-              Upload Multiformat Files
-            </h3>
-            <p className="text-[#6D5A4B] leading-relaxed">
-              Accept image, document, and audio inputs in one unified interface.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-8 shadow-sm">
-            <p className="text-sm text-[#A08467] mb-3">02</p>
-            <h3 className="text-2xl font-semibold text-[#4B3A2F] mb-4">
-              Simulated AI Language Processing
-            </h3>
-            <p className="text-[#6D5A4B] leading-relaxed">
-              Detect language, extract content, and generate structured summaries.
-            </p>
-          </div>
-
-          <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-8 shadow-sm">
-            <p className="text-sm text-[#A08467] mb-3">03</p>
-            <h3 className="text-2xl font-semibold text-[#4B3A2F] mb-4">
-              Track Your Analysis History
-            </h3>
-            <p className="text-[#6D5A4B] leading-relaxed">
-              Every processed file is stored and accessible from your dashboard.
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

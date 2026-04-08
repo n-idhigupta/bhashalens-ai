@@ -8,84 +8,79 @@ function SignupPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: ""
+    password: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError("");
   };
 
-  const handleSubmit = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setMessage("");
 
     try {
       const { data } = await API.post("/auth/register", formData);
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate("/dashboard");
-    } catch (error) {
-      setMessage(error.response?.data?.message || "Registration failed");
-    } finally {
-      setLoading(false);
+    } catch (err) {
+      console.error("Signup Error:", err.response?.data || err.message);
+      setError(err.response?.data?.message || "Registration failed");
     }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-[#FAF7F2] px-4">
-      <div className="bg-white shadow-sm border border-[#EFE5D8] rounded-3xl p-8 w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center mb-2 text-[#3E2F25]">Create Account</h2>
-        <p className="text-center text-[#7A6757] mb-6">Start using BhashaLens AI</p>
+    <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2] px-4">
+      <div className="bg-white p-10 rounded-3xl shadow-md w-full max-w-lg border border-[#EFE5D8]">
+        <p className="text-sm tracking-[0.3em] text-[#B28A6A] mb-4">SIGNUP</p>
+        <h1 className="text-4xl font-bold text-[#4B2E1F] mb-4">
+          Create Account
+        </h1>
+        <p className="text-[#6E4D3B] mb-6">Start using BhashaLens AI</p>
 
-        {message && (
-          <p className="text-center mb-4 text-sm text-red-600">{message}</p>
-        )}
+        {error && <p className="text-red-500 mb-4">{error}</p>}
 
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form onSubmit={handleSignup} className="space-y-4">
           <input
             type="text"
             name="name"
-            placeholder="Full Name"
+            placeholder="Enter your name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full border border-[#E6DACC] bg-[#FCFAF7] p-3 rounded-xl outline-none focus:ring-2 focus:ring-[#D7C2AA]"
+            className="w-full border rounded-xl px-4 py-3"
             required
           />
-
           <input
             type="email"
             name="email"
-            placeholder="Email Address"
+            placeholder="Enter your email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full border border-[#E6DACC] bg-[#FCFAF7] p-3 rounded-xl outline-none focus:ring-2 focus:ring-[#D7C2AA]"
+            className="w-full border rounded-xl px-4 py-3"
             required
           />
-
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Enter your password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full border border-[#E6DACC] bg-[#FCFAF7] p-3 rounded-xl outline-none focus:ring-2 focus:ring-[#D7C2AA]"
+            className="w-full border rounded-xl px-4 py-3"
             required
           />
-
           <button
             type="submit"
-            className="w-full bg-[#4B3A2F] text-white py-3 rounded-xl hover:bg-[#5A4638] transition"
+            className="w-full bg-[#4B2E1F] text-white py-3 rounded-xl"
           >
-            {loading ? "Creating account..." : "Sign Up"}
+            Sign Up
           </button>
         </form>
 
-        <p className="text-center mt-5 text-sm text-[#6D5A4B]">
+        <p className="mt-6 text-center text-[#6E4D3B]">
           Already have an account?{" "}
-          <Link to="/login" className="text-[#8C6A4A] font-semibold">
+          <Link to="/login" className="font-semibold">
             Login
           </Link>
         </p>

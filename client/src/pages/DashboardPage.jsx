@@ -41,13 +41,10 @@ function DashboardPage() {
           Manage your uploaded files, AI results, and multilingual analysis history.
         </p>
 
-        {/* Stats */}
         <div className="grid md:grid-cols-3 gap-6 mb-10">
           <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-6 shadow-sm">
             <p className="text-sm text-[#A08467] mb-2">Total Uploads</p>
-            <h2 className="text-4xl font-bold text-[#3E2F25]">
-              {history.length}
-            </h2>
+            <h2 className="text-4xl font-bold text-[#3E2F25]">{history.length}</h2>
           </div>
 
           <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-6 shadow-sm">
@@ -65,7 +62,6 @@ function DashboardPage() {
           </div>
         </div>
 
-        {/* Quick Actions */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <Link
             to="/upload"
@@ -94,7 +90,6 @@ function DashboardPage() {
           </Link>
         </div>
 
-        {/* History */}
         <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-8 shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold text-[#4B3A2F]">

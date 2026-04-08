@@ -22,10 +22,10 @@ function LoginPage() {
 
     try {
       const { data } = await API.post("/auth/login", formData);
-
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate("/dashboard");
     } catch (error) {
+      console.error("Login Error:", error.response?.data || error.message);
       setMessage(error.response?.data?.message || "Login failed");
     }
   };
@@ -45,9 +45,7 @@ function LoginPage() {
           Sign in to continue using BhashaLens AI.
         </p>
 
-        {message && (
-          <p className="mb-4 text-sm text-red-600">{message}</p>
-        )}
+        {message && <p className="mb-4 text-sm text-red-600">{message}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <input

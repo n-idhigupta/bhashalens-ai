@@ -39,7 +39,6 @@ function ResultsPage() {
           detected type, extracted content, identified language, and generated summary.
         </p>
 
-        {/* Top summary cards */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-6 shadow-sm">
             <p className="text-sm text-[#A08467] mb-2">File Name</p>
@@ -64,13 +63,10 @@ function ResultsPage() {
 
           <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-6 shadow-sm">
             <p className="text-sm text-[#A08467] mb-2">AI Confidence</p>
-            <h2 className="text-2xl font-bold text-[#3E2F25]">
-              {confidence}
-            </h2>
+            <h2 className="text-2xl font-bold text-[#3E2F25]">{confidence}</h2>
           </div>
         </div>
 
-        {/* Extracted text */}
         <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-8 shadow-sm mb-8">
           <p className="uppercase tracking-[0.2em] text-xs text-[#A08467] mb-4">
             Extracted Content
@@ -80,7 +76,6 @@ function ResultsPage() {
           </p>
         </div>
 
-        {/* AI summary */}
         <div className="grid md:grid-cols-3 gap-6">
           <div className="md:col-span-2 bg-white border border-[#EFE5D8] rounded-[2rem] p-8 shadow-sm">
             <p className="uppercase tracking-[0.2em] text-xs text-[#A08467] mb-4">

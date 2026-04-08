@@ -37,6 +37,7 @@ function UploadPage() {
       localStorage.setItem("analysisResult", JSON.stringify(data));
       navigate("/results");
     } catch (error) {
+      console.error("Upload Error:", error.response?.data || error.message);
       setMessage(error.response?.data?.message || "Upload failed");
     } finally {
       setLoading(false);
@@ -60,9 +61,7 @@ function UploadPage() {
         </p>
 
         <div className="bg-white border border-[#EFE5D8] rounded-[2rem] p-8 shadow-sm">
-          {message && (
-            <p className="mb-6 text-sm text-red-600">{message}</p>
-          )}
+          {message && <p className="mb-6 text-sm text-red-600">{message}</p>}
 
           <form onSubmit={handleUpload} className="space-y-8">
             <label className="block border-2 border-dashed border-[#DCCDBB] rounded-[2rem] bg-[#FCFAF7] p-12 text-center cursor-pointer hover:bg-[#F8F4EE] transition">
